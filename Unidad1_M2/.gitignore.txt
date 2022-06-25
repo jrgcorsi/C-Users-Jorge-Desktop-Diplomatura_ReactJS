@@ -1,1 +1,1 @@
-carpeta imagenes.rar
+carpeta_imagenes.rar
