@@ -1,3 +1,8 @@
+#se descargo el archivo propuesto y se ignoro
 *.rar
-mabel.png
+
+#se movieron las imagenes de su carpeta original al directorio principal del modulo y se ocultaron solo las "png"
+*.png
+
+#se creo el archivo lista y se oculto
 lista.txt
