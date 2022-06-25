@@ -1,1 +1,2 @@
 carpeta_imagenes.rar
+lista.txt
