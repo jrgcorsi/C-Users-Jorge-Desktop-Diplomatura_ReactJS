@@ -1,0 +1,77 @@
+body {
+    background-color: lightgray;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    font-size: 4rem;
+    text-shadow: 4px 5px 10px tomato;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+button {
+    cursor: alias;
+    padding: 10px;
+    background-color: cadetblue;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 4px 4px 10px black ;
+
+}
+button:hover {
+    background-color: violet;
+    padding: 12px ;
+}
+
+center {
+    background: linear-gradient(to bottom right, red, blue);
+    padding: 20px;
+    border-radius: 4px;
+    width: auto;
+}
+
+p {
+    margin-right: 10px;
+    width: auto;
+    color: blue;
+    text-shadow: 3px 3px 8px grey;
+    font-size: large;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+img {
+    padding: 20px;
+    border-radius: 70px;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#principal_txt {
+
+    column-count: 2;
+    column-gap: 20px;
+}
+
+#whatsapp {
+    border-style: hidden;
+    box-shadow: none;
+    padding: 10px;
+    margin: 0px;
+    color: forestgreen;
+    background: none;
+    font-size: 50px;
+}
+
+.grid a {
+    display: grid;
+    width: auto; 
+}
