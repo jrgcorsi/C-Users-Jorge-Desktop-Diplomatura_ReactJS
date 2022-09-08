@@ -1,3 +1,5 @@
+
+
 body {
     background-image: url(img/wind-turbine-2244222_1280.jpg);
     background-attachment: fixed;
@@ -131,21 +133,11 @@ header {
 
 .logo1 {
     color: black;
-    position: fixed;
-    left: 10%;
-    top: 20%;
+    position: block;
+    text-align: center;
+    margin-top: 100px;
     font-weight: bold;
     font-size: 150px;
-}
-
-.logo2 {
-    color: black;
-    position: fixed;
-    left: 22%;
-    top: 52%;
-    font-weight: bold;
-    font-size: 90px;
-
 }
 
 @media screen and (min-width:2px) and (max-width:750px) {
@@ -165,19 +157,9 @@ header {
         color: black;
         position: block;
         left: 10%;
-        top: 40%;   
+        top: 40%;
         font-weight: bold;
         font-size: 50px;
-    }
-
-    .logo2 {
-        color: black;
-        position: block;
-        text-align: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 30px;
-
     }
 
 }
@@ -197,23 +179,11 @@ header {
 
     .logo1 {
         color: black;
-        position: block;
-        left: 10%;
-        top: 40%;   
+        position: relative;
+        text-align: center;
+        margin-top: 100px;
         font-weight: bold;
         font-size: 100px;
     }
-
-    .logo2 {
-        color: black;
-        position: block;
-        text-align: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 50px;
-
-    }
-
-
 
 }
