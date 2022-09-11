@@ -1,0 +1,73 @@
+<!--
+    
+Ejericio 1
+Crear el código que dada una distancia determine el medio de transporte apropiado de acuerdo a las siguientes reglas:
+0 a 1000 metros = pie
+1000 a 10000 metros = bicicleta
+10000 a 30000 metros = colectivo
+30000 a 100000 metros = auto
++100000 = avion
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de transporte</title>
+</head>
+
+<body>
+
+
+    <script>
+        const pie = 1000;
+        const bicicleta = 10000;
+        const colectivo = 30000;
+        const auto = 100000;
+        let transporte = ''
+        let nombre = ''
+
+        nombre = window.prompt('quien eres', 'Ingrese su nombre:', '');
+        const distancia = parseInt(prompt('Ingrese la distancia:', ''));
+
+        if (Number.isNaN(distancia)) { document.write(`La distancia ingresada no es válida`) }
+
+        else if (distancia >= 0 && distancia <= pie) {
+            transporte = 'pie'
+            {document.write(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo ir a ${transporte}`)
+             console.log(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo ir a ${transporte}`)
+            }
+        }
+        else if (distancia > pie && distancia <= bicicleta) {
+            { transporte = 'bicicleta' }
+            { document.write(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo usar un ${transporte}`)
+              console.log(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo usar un ${transporte}`)
+            }
+        }
+        else if (distancia > bicicleta && distancia <= colectivo) {
+            { transporte = 'colectivo' }
+            { document.write(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo usar un ${transporte}`)
+              console.log(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo usar un ${transporte}`)
+            }
+        }
+        else if (distancia > colectivo && distancia <= auto) {
+            { transporte = 'auto' } 
+            { document.write(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo usar un ${transporte}`)
+              console.log(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo usar un ${transporte}`)
+            }
+        }
+        else if (distancia > auto) {
+            { transporte = 'avion' }
+            { document.write(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo usar un ${transporte}`)
+            console.log(`Hola ${nombre} como tienes que recorrer ${distancia} metros, te recomiendo usar un ${transporte}`)
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

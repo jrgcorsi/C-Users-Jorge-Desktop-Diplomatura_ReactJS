@@ -1,0 +1,44 @@
+<!--
+Ejericio 2
+Crear el código que reciba como parámetro un array de números y devuelva el mayor.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cual numero es menor</title>
+</head>
+
+<body>
+
+    <script>
+
+        let x = 1;
+        let cuantos = '';
+        let mayor = ''
+        let mi_lista = [];
+
+        cuantos = window.prompt('Primero definamos la lista', 'Cuantos numeros al azar quieres ingresar', '');
+
+        while (x <= cuantos) {
+            valor = parseInt(prompt(`Ingrese el valor`, ''));
+            mi_lista.push(valor)
+            x += 1
+        }
+
+        mi_lista.sort(function (a, b) { return a - b; });
+        console.log(mi_lista)
+
+        mayor = mi_lista[mi_lista.length - 1]
+
+        document.write(`Hola, el numero mayor de tu lista es ${mayor}`)
+
+    </script>
+
+</body>
+
+</html>
