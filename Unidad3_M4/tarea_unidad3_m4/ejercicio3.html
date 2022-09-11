@@ -1,0 +1,66 @@
+<!--
+Ejercicio 3:
+Dado el siguiente array de alumnos utilizar los métodos de array vistos para generar un array con los alumnos aprobados. 
+Se considera aprobado todo alumno que tenga una nota mayor o igual a 7.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de aprobados</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        var alumnos = [
+
+            {
+                nombre: 'Juan Gomez',
+                nota: 7
+
+            }, {
+                nombre: 'Pedro Rodriguez',
+                nota: 4
+
+            }, {
+                nombre: 'Roxana García',
+                nota: 8
+
+            }, {
+                nombre: 'Luciano Lopez',
+                nota: 5
+
+            }, {
+                nombre: 'Fernanda Gimenez',
+                nota: 6
+
+            }, {
+                nombre: 'Florencia Martinez',
+                nota: 10
+
+            }, {
+                nombre: 'Raul Sanchez',
+                nota: 7
+
+            }, {
+                nombre: 'Sandra Figueroa',
+                nota: 8
+            }
+        ];
+
+        const aprobados = alumnos.filter(n => n.nota >= 7)
+        console.log(aprobados);
+        document.write(JSON.stringify(aprobados,null,2))
+
+</script>
+
+</body>
+
+</html>

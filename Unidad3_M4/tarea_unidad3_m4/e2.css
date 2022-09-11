@@ -1,0 +1,9 @@
+
+.container-f{
+    display: flex;
+    text-align: center;
+}
+
+.container-c{
+    display: grid;
+}

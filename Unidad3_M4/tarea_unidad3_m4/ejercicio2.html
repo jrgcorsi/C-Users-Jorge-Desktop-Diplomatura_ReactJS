@@ -1,0 +1,43 @@
+<!--
+Ejercicio 2: 
+Programar un contador de caracteres para un textarea  
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="e2.css">
+    <title>Contador de letras</title>
+</head>
+
+<body>
+
+    <div class="container-f">
+        <form class="container-c">
+            <label>Ingresa el texto que desean contar</label>
+            <textarea name="consulta" id="comentario" cols="30" rows="10" maxlength="200"></textarea>
+            <label id="contador">Usted ha ingresado: 0 / 200</label>
+
+        </form>
+    </div>
+    <script>
+
+        const mensaje = document.getElementById('comentario');
+        const contador = document.getElementById('contador');
+
+        mensaje.addEventListener('input', function (e) {
+            const target = e.target;
+            const longitudMax = target.getAttribute('maxlength');
+            const longitudAct = target.value.length; // No olvidar el valor actual antes de modificar el texto original
+            contador.innerHTML = `Usted ha ingresado: ${longitudAct}/${longitudMax}`;
+        });
+
+    </script>
+
+</body>
+
+</html>
