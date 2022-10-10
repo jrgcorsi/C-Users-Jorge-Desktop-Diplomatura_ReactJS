@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background-image: url(img/Background.jpg);
+  background-attachment: fixed;
+  background-size: 100% 100%; /*100% 100%*/
+  background-repeat: no-repeat;
+
+}
+

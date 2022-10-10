@@ -1,0 +1,41 @@
+.card-group {
+    max-width: 100%;
+    padding-top: 20px;
+}
+
+.persona {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.img {
+    margin: 10px;
+    width: auto;
+}
+
+.h3_somos {
+    padding: 20px;
+}
+
+.card-text {
+    margin: 10px;
+    font-size: small;
+}
+
+.card-title {
+    color: darkblue;
+    font-weight: 700;
+}
+
+.cargo {
+    color: blue;
+    font-weight: 600;
+}
+
+
+.Historia{
+    font-weight: bold;
+}
