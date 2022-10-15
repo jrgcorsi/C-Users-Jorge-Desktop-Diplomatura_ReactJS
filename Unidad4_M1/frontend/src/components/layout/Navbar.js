@@ -24,7 +24,7 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
-    <Container>
+    <Container style={{zIndex:'1' }}>
       <Wrapper>
         <IconContext.Provider value={{ style: { fontSize: "2em" } }}>
           <LogoContainer>
