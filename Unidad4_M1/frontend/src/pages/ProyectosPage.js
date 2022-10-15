@@ -1,16 +1,19 @@
 import React from 'react'
 import Accordion from 'react-bootstrap/Accordion';
 import Image from 'react-bootstrap/Image'
-import "/Users/Jorge/Desktop/Diplomatura_ReactJS/Unidad4_M1/frontend/src/styles/components/pages/Proyectos.css"
 
 import Energia_Eolica from '../img/Energia_eolica.jpg'
 import Energia_Electrica from '../img/Energia_electrica.jpg'
 import Energia_Hidraulica from '../img/Energia_hidraulica.jpg'
 import Energia_Solar from '../img/Energia_solar.jpg'
 
+// ARCHIVO DE ESTILO
+import "../../src/styles/components/pages/Proyectos.css"
+
+
 const ProyectosPage = () => {
     return (
-        <div>
+        <div className='div_accordion'>
             <Accordion className='accordion' alwaysOpen defaultActiveKey="0" >
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Obra Electromecanica en Media y Baja tension (llave en mano) </Accordion.Header>

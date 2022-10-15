@@ -5,7 +5,10 @@ const styles = {
     height: '400px',
     color: 'black',
     fontWeight: '900',
-    fontSize: '60px'
+    fontSize: '60px',
+    marginTop: '100px',
+    display: 'inline-block',
+
   }
 }
 

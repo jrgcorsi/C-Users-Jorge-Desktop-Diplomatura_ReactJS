@@ -5,7 +5,11 @@ export const Container = styled.div`
   height: 70px;
   background-color: #23394d; //23394d
   margin-bottom: 20px;
+  position: absolute;
+  z-index: 2;
 `;
+
+// Hay que posicionar y luego dar z-Index para que el resto no aparezca adelante.
 
 export const Wrapper = styled.div`
   width: 100%;

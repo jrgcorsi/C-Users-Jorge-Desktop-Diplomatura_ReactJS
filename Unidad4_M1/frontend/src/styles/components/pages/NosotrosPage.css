@@ -18,6 +18,8 @@
 
 .h3_somos {
     padding: 20px;
+    display: inline-block;
+    margin-top: 100px;
 }
 
 .card-text {

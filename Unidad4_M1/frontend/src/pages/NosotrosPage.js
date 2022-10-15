@@ -9,8 +9,9 @@ import Nosotros4 from '../img/nosotros4.jpg'
 import Nosotros5 from '../img/nosotros5.jpg'
 
 import Image from 'react-bootstrap/Image'
-import "/Users/Jorge/Desktop/Diplomatura_ReactJS/Unidad4_M1/frontend/src/styles/components/pages/NosotrosPage.css"
 
+// ARCHIVO DE ESTILO
+import "../../src/styles/components/pages/NosotrosPage.css"
 
 function NosotrosPage() {
     return (

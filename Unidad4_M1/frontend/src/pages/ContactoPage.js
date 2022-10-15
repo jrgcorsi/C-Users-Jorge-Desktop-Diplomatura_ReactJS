@@ -5,7 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
 // ARCHIVO DE ESTILO
-import "/Users/Jorge/Desktop/Diplomatura_ReactJS/Unidad4_M1/frontend/src/styles/components/pages/ContactoPage.css"
+import "../../src/styles/components/pages/ContactoPage.css"
+
 
 const ContactoPage = () => {
     return (
