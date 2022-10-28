@@ -1,15 +1,110 @@
 body {
-  padding: 50px;
+  padding: 0px;
+  margin: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  margin-left: 20px;
 }
 
-.navbar{
+.navbar {
   display: flex;
   text-decoration: none;
-  background-color: white;
-  justify-content: center;
+  background-color: grey;
+  justify-content: right;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.icono {
+  width: 100%;
+  color: white;
+}
+
+.ico {
+  margin-left: 5px;
+} 
+
+.logo {
+  margin-left: 20px;
+  font-size: large;
+  align-items: center;
+}
+
+.descripcion {
+  font-size: small;
+}
+
+.boton {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  margin: 10px;
+  width: 30%;
+}
+
+button{
+  width: 100px;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.submit{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container_form{
+  border: solid white 1px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px grey ;
+  padding: 40px;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+.alerta{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.tarjeta{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.perfil{
+  box-shadow: 2px 2px 5px grey ;
+  padding: 40px;
+
+}
+
+.init_screen{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
 }

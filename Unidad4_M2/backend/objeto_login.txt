@@ -1,0 +1,86 @@
+// Crear usuario
+
+const token = _id => jwt.sign({ _id }, 'mi-string-secreto')
+const validateJwt = expressJwt({ secret: 'mi-string-secreto', algorithms: ['HS256'] });
+
+//////////// REGISTRO DE USUARIO
+app.post('/admin/registrar', async (req, res) => {
+  const { body } = req
+  // console.log({body})
+  try {
+    const isUser = await User.findOne({ email: body.email })
+    if (isUser) {
+      return res.status(403).send('Usuario ya existe')
+    }
+    const salt = await bcrypt.genSalt()
+    const hashed = await bcrypt.hash(body.password, salt)
+    const user = await User.create({ email: body.email, password: hashed, salt })
+    const signed = token(user._id)
+    // res.status(200).send(signed)
+
+    res.send(signed)
+
+  } catch (err) {
+    res.status(500).send(err.message)
+  }
+})
+
+
+/////////////// LOGIN DE USUARIO
+app.post('/admin/login', async (req, res) => {
+  const { body } = req
+  try {
+    const user = await User.findOne({ email: body.email })
+    if (!user) {
+      res.status(403).send('Usuario y/o constraseña invalida')
+    } else {
+      isMatch = await bcrypt.compare(body.password, user.password)
+      if (isMatch) {
+        const signed = token(user._id)
+        res.render('index', { title: `BIENVENIDO ${user} ${signed}` })
+        // res.status(200).send(signed)
+      } else {
+        res.status(403).send('Usuario y/o constraseña invalida')
+      }
+    }
+  } catch {
+    res.status(500).send(err.message)
+  }
+})
+
+
+///////////////////////////////////////////
+const asignaUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.auth._id)
+    if (!user) {
+      return res.status(401).end()
+    }
+    req.user = user
+    next()
+  } catch (e) {
+    next(e)
+  }
+}
+
+// Unimos Middleware
+const autenticado = express.Router().use(validateJwt, asignaUser)
+
+// rutas
+app.use('/', indexRouter);
+app.use('/admin/login', loginRouter);
+app.use('/admin/registrar', RegistrarRouter);
+app.use('/nosotros', autenticado, nosotrosRouter);
+app.use('/noticias', autenticado, noticiasRouter);
+app.use('/contacto', autenticado, contactoRouter);
+
+
+// app.get('/admin/noticias', validateJwt, (req, res) => {
+//   res.send(req.auth)
+// })
+// app.get('/nosotros', autenticado, (req, res) => {
+//   res.send('Hola soy la pagina de quienes somos')
+// })
+// app.get('/contacto', autenticado, (req, res) => {
+//   res.send('Hola soy la pagina para escribirnos')
+// })

@@ -6,12 +6,22 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "hbs": "~4.0.4",
+    "express-jwt": "^7.7.5",
+    "express-session": "^1.17.3",
+    "flash": "^1.1.0",
+    "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.6",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "req-flash": "^0.0.3"
   }
 }

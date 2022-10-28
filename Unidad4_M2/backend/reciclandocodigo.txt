@@ -1,0 +1,89 @@
+mongoose.connect(mongo_db, function (err) {
+  if (err) {
+    throw err;
+  } else {
+    console.log(`conectado correctamente a ${mongo_db}`);
+  }
+});
+
+
+app.post('/admin/registrar', (req, res) => {
+  const { mail, password } = req.body;
+  const user = new User({ mail, password });
+  const signed = Token(user._id); //
+
+  user.save(err => {
+    if (err) {
+      res.status(500).send(`ERROR AL REGISTRAR EL USUARIO ${mail} QUIZAS YA EXISTA ${err.message}`);
+    } else {
+      res.status(200).send(`SE HA REGISTRADO ${mail} CORRECTAMENTE ${signed}`);
+    }
+  });
+});
+
+app.post('/admin/login', (req, res) => {
+  const { mail, password } = req.body;
+  User.findOne({ mail }, (err, user) => {
+    if (err) {
+      res.status(500).send(`ERROR AL INICIAR SESION CON ${mail}`);
+    } else if (!user) {
+      res.status(500).send(`EL USUARIO ${mail} NO EXISTE`);
+    } else {
+      user.IsPassword(password, (err, result) => {
+        if (err) {
+          res.status(500).send(`ERROR AL INICIAR SESION CON ${mail}`);
+        } else if (result) {
+          const signed = Token(user._id);
+          res.render('index', { title: `BIENVENIDO ${mail} ${signed}` });
+          // res.status(200).send(`BIENVENIDO ${mail}`);
+        } else {
+          res.status(500).send('USUARIO Y/O PASSWORD INCORRECTO');
+        }
+      });
+    }
+  })
+});
+
+
+
+
+
+
+users.js
+
+const saltRounds = 10;
+
+const UserSchema = new mongoose.Schema({
+  mail: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
+});
+
+UserSchema.pre('save', function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const documento = this;
+
+    bcrypt.hash(documento.password, saltRounds, (err, hashedPassword) => {
+      if (err) {
+          next(err);
+      } else {
+          documento.password = hashedPassword;
+          next();
+      }
+    });
+  } else {
+      next();
+  }
+});
+
+UserSchema.methods.IsPassword = function (propPassword, callback) {
+  bcrypt.compare(propPassword, this.password, function (err, same) {
+    if (err) {
+        callback(err);
+    } else {
+        callback(err, same);
+    }
+  });
+}
+
+module.exports = mongoose.model('User', UserSchema);
+
