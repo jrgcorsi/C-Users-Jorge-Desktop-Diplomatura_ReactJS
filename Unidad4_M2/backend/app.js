@@ -6,6 +6,7 @@ var logger = require('morgan');
 var passport = require('passport');
 var session = require('express-session');
 var flash = require('connect-flash');
+var methodOverride = require ('method-override');
 
 // mongoose.connect('mongodb+srv://admin:admin@cluster0.xq7lmvy.mongodb.net/auth?retryWrites=true&w=majority')
 
@@ -22,7 +23,8 @@ require('./public/passport/local-auth');
 
 // configuraciones
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'hbs' );
+
 // app.set('port', process.env.PORT || 3000);
 
 // middlewares >> Antes de las rutas
@@ -30,6 +32,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'misecreto',
@@ -52,9 +55,6 @@ app.use((req, res, next) => {
 
 // Rutas
 app.use('/', require('./routes/index')) ;
-
-
-
 
 // Iniciando el servidor
 app.listen(app.get('port'), () => {

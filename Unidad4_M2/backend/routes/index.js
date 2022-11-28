@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-
+const NoticiasControl = require ('../controllers/notes.controller')
 
 // Rutas inicio
 router.get('/', (req, res, next) => {
-  res.render('index');
+  res.redirect('/login');
+  // res.render('index');
 });
 
 // REGISTRO
@@ -33,18 +34,38 @@ router.post('/login', passport.authenticate('local-signin', {
 router.get('/logout', (req, res, next) => {
   req.logout(req.user, err => {
     if (err) return next(err);
-    res.redirect('/');
+    res.redirect('/login');
   });
 });
 
 // RUTAS PRIVADAS
 
 router.get('/mi_perfil', isAuthenticated, (req, res, next) => {
-  res.render('perfil');
+  res.render('perfil', { layout: 'layout_auth'});
 });
 
+router.get('/noticias', isAuthenticated, (req, res, next) => {
+  res.render('notes/noticias', { layout: 'layout_auth'});
+});
+
+// New Note
+router.get("/notes/add", isAuthenticated, NoticiasControl.renderNoteForm);
+
+router.post("/notes/new-note", isAuthenticated, NoticiasControl.createNewNote);
+
+// Get All Notes
+router.get("/notes", isAuthenticated, NoticiasControl.renderNotes);
+
+// Edit Notes
+router.get("/notes/edit/:id", isAuthenticated, NoticiasControl.renderEditForm);
+
+router.put("/notes/edit-note/:id", isAuthenticated, NoticiasControl.updateNote);
+
+// Delete Notes
+router.delete("/notes/delete/:id", isAuthenticated, NoticiasControl.deleteNote);
+
 router.get('/mySQL', isAuthenticated, (req, res, next) => {
-  res.send('base de datos');
+  res.send('base de datos'); //ruta solo para validar la autenticacion
 });
 
 
