@@ -14,10 +14,6 @@ const NoteSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    img: {
-      data: Buffer,
-      contentType: String,
-    },
   },
   {
     timestamps: true, //funciona como un createAT

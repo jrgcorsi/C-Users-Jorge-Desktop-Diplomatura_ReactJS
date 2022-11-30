@@ -21,9 +21,6 @@ const NoticiasControl = {
         if (!description) {
             errors.push({ text: "Please Write a Description" });
         }
-        if (!img) {
-            errors.push({ text: "Please Write a imagen" });
-        }
         if (errors.length > 0)
             return res.render("notes/new-note", {
                 layout: 'layout_auth',
