@@ -7,29 +7,13 @@ var passport = require('passport');
 var session = require('express-session');
 var flash = require('connect-flash');
 var methodOverride = require ('method-override');
-const multer = require('multer');
+var nodemailer = require('nodemailer');
 
-// mongoose.connect('mongodb+srv://admin:admin@cluster0.xq7lmvy.mongodb.net/auth?retryWrites=true&w=majority')
-
-// LIBRERIAS >>>>>>>
-// npm i bcrypt-nodejs
-// npm i jsonwebtoken
-// npm i mongoose
-// npm i express-jwt
 
 // Inicializaciones
 var app = express();
 require('./database');
 require('./public/passport/local-auth');
-
-// const storage = multer.diskStorage({
-//   destination: path.join(__dirname, '../upload'),
-//   filename: (req, file, cb, filename) => {
-//       console.log(file);
-//       cb(null, v4() + path.extname(file.originalname));
-//   }
-// }) 
-// app.use(multer({storage}).single('image'));
 
 // configuraciones
 app.set('views', path.join(__dirname, 'views'));

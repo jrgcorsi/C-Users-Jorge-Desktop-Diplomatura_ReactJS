@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-const NoticiasControl = require ('../controllers/notes.controller')
+const NoticiasControl = require('../controllers/notes.controller')
+var nodemailer = require('nodemailer');
+const SMTPConnection = require('nodemailer/lib/smtp-connection');
 
 // Rutas inicio
 router.get('/', (req, res, next) => {
@@ -38,14 +40,42 @@ router.get('/logout', (req, res, next) => {
   });
 });
 
+
+// Mailer
+router.post('/contacto', (req, res) => {
+  var transporter = nodemailer.createTransport({
+    host: "smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+      user: "ecd0c4da89dc4f",
+      pass: "957749809695fb"
+    }
+  });
+  var mailOpciones = {
+    from: 'Remitente',
+    to: 'jrgcorsi@gmail.com',
+    subject: 'Enviado de nodemailer',
+    text: 'Prueba de mailer'
+  };
+
+  transporter.sendMail(mailOpciones, (err, info) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.status(200).jsonp(req.body);
+    }
+
+  });
+});
+
 // RUTAS PRIVADAS
 
 router.get('/mi_perfil', isAuthenticated, (req, res, next) => {
-  res.render('perfil', { layout: 'layout_auth'});
+  res.render('perfil', { layout: 'layout_auth' });
 });
 
 router.get('/noticias', isAuthenticated, (req, res, next) => {
-  res.render('notes/noticias', { layout: 'layout_auth'});
+  res.render('notes/noticias', { layout: 'layout_auth' });
 });
 
 // New Note
