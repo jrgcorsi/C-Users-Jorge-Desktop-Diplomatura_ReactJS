@@ -42,8 +42,16 @@ router.get('/logout', (req, res, next) => {
 
 
 // Mailer
-router.post('/contacto', (req, res) => {
-  var transporter = nodemailer.createTransport({
+router.post('/contacto', async (req, res) => {
+
+  const mail = {
+    // from: 'Remitente',
+    to: 'jrgcorsi@gmail.com',
+    subject: 'contacto web',
+    html: `${req.body.nombre}, ${req.body.apellido} de la empresa ${req.body.empresa}, ${req.body.direccion} - ${req.body.ciudad} (${req.body.provincia}) se contacto a traves de la web y quiere mas informacion al correo ${req.body.fromGridEmail}`
+  };
+
+  const transport = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
     port: 2525,
     auth: {
@@ -51,21 +59,12 @@ router.post('/contacto', (req, res) => {
       pass: "957749809695fb"
     }
   });
-  var mailOpciones = {
-    from: 'Remitente',
-    to: 'jrgcorsi@gmail.com',
-    subject: 'Enviado de nodemailer',
-    text: 'Prueba de mailer'
-  };
+  await transport.sendMail(mail)
 
-  transporter.sendMail(mailOpciones, (err, info) => {
-    if (err) {
-      res.status(500).send(err.message);
-    } else {
-      res.status(200).jsonp(req.body);
-    }
-
-  });
+  res.status(201).json({
+    error: false,
+    message: 'mensaje enviado'
+  })
 });
 
 // RUTAS PRIVADAS
