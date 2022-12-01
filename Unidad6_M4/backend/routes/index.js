@@ -48,7 +48,7 @@ router.post('/contacto', async (req, res) => {
     // from: 'Remitente',
     to: 'jrgcorsi@gmail.com',
     subject: 'contacto web',
-    html: `${req.body.nombre}, ${req.body.apellido} de la empresa ${req.body.empresa}, ${req.body.direccion} - ${req.body.ciudad} (${req.body.provincia}) se contacto a traves de la web y quiere mas informacion al correo ${req.body.fromGridEmail}`
+    html: `${req.body.nombre}, ${req.body.apellido} de la empresa ${req.body.empresa}, ${req.body.direccion} - ${req.body.ciudad} (${req.body.provincia}) se contacto a traves de la web y quiere mas informacion al correo ${req.body.email}`
   };
 
   const transport = nodemailer.createTransport({
