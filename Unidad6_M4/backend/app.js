@@ -8,12 +8,15 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var methodOverride = require ('method-override');
 var nodemailer = require('nodemailer');
+var cors = require('cors');
+var apiRouter = require('./routes/api');
 
 
 // Inicializaciones
 var app = express();
 require('./database');
 require('./public/passport/local-auth');
+
 
 // configuraciones
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +39,7 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use('/api', cors(), apiRouter);
 
 // mensajes de alerta
 app.use((req, res, next) => {

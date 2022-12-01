@@ -73,17 +73,17 @@ router.get('/mi_perfil', isAuthenticated, (req, res, next) => {
   res.render('perfil', { layout: 'layout_auth' });
 });
 
-router.get('/noticias', isAuthenticated, (req, res, next) => {
-  res.render('notes/noticias', { layout: 'layout_auth' });
-});
-
 // New Note
 router.get("/notes/add", isAuthenticated, NoticiasControl.renderNoteForm);
 
 router.post("/notes/new-note", isAuthenticated, NoticiasControl.createNewNote);
 
-// Get All Notes
-router.get("/notes", isAuthenticated, NoticiasControl.renderNotes);
+// Get All Notes desde cliente en JSON
+// router.get("/novedades", NoticiasControl.renderNotesJson);
+
+// administrador de noticias desde administrador
+router.get("/notes", isAuthenticated , NoticiasControl.renderNotes);
+
 
 // Edit Notes
 router.get("/notes/edit/:id", isAuthenticated, NoticiasControl.renderEditForm);

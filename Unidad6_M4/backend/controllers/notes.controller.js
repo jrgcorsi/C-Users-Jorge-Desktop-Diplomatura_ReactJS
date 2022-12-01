@@ -2,8 +2,6 @@
 
 const Note = require('../public/models/noticia');
 const Image = require('../public/models/image')
-const multer = require('multer');
-const path = require('path')
 
 const NoticiasControl = {
 
@@ -45,6 +43,12 @@ const NoticiasControl = {
         res.render("notes/all-notes", { notes, layout: 'layout_auth' });
     },
 
+    renderNotesJson: async (req, res) => {
+        const notes = await Note.find(req.param.id )
+            .sort({ date: "desc" })
+            .lean();
+            res.json(notes);
+    },
 
     // Editar notas
     renderEditForm: async (req, res) => {
@@ -75,43 +79,3 @@ const NoticiasControl = {
 
 module.exports = NoticiasControl;
 
-    // // Crear nota
-    // createNewNote: async (req, res) => {
-    //     const { title, description } = req.body;
-    //     const errors = [];
-    //     if (!title) {
-    //         errors.push({ text: "Please Write a Title." });
-    //     }
-    //     if (!description) {
-    //         errors.push({ text: "Please Write a Description" });
-    //     }
-    //     if (errors.length > 0)
-    //         return res.render("notes/new-note", {
-    //             layout: 'layout_auth',
-    //             errors,
-    //             title,
-    //             description,
-    //         });
-
-    //     newNote = new Note({ title, description });
-    //     newNote.user = req.user.id;
-    //     await newNote.save();
-    //     req.flash("success_msg", "Note Added Successfully");
-    //     res.redirect("/notes");
-    // },
-
-    // createNewNote: async (req, res) => {
-    //     const image = new Image();
-
-    //     const errors = [];
-
-    //     image.title = req.body.title;
-    //     image.description = req.body.description;
-    //     image.filename = req.file.filename;
-    //     image.path = '../upload/' + req.file.filename;
-    //     image.originalname = req.file.originalname;
-    //     image.mimetype = req.file.mimetype;
-    //     image.size = req.file.size;
-    //     await image.save();
-    //     res.redirect('/notes');
-    // },
