@@ -37,7 +37,7 @@ const ContactoPage = (props) => {
     }
 
     const handleSubmit = async e => {
-        e.prevetDefault();
+        e.preventDefault();
         setMsg('');
         setSending(true)
         const response = await axios.post('http://localhost:3000/api/contacto', formData);
@@ -51,7 +51,7 @@ const ContactoPage = (props) => {
 
     return (
         <div className="formulario_div">
-            <Form action='http://localhost:3000/api/contacto' method="post" onSubmit={handleSubmit} className="formulario">
+            <Form action="/contacto" method="post" onSubmit={handleSubmit} className="formulario">
                 <Row className="mb-6">
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label><b>Email</b></Form.Label>
@@ -118,13 +118,12 @@ const ContactoPage = (props) => {
                 </Row>
 
                 <br />
-                {sending ? <p>Enviando...</p> : null}
-                {msg ? <p>{msg}</p> : null}
-
                 <Button variant="primary" type="submit">
                     Enviar
                 </Button>
             </Form>
+            {sending ? <p>Enviando...</p> : null}
+            {msg ? <p>{msg}</p> : null}
 
 
         </div>
