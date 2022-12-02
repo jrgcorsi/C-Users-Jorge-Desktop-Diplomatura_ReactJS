@@ -5,5 +5,3 @@
 #se creo el archivo lista y se oculto
 lista.txt
 
-#omitir los archivos de clases grabadas
-*.mp4
