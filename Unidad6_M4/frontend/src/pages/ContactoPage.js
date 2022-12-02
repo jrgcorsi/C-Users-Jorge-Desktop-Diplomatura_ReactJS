@@ -40,8 +40,7 @@ const ContactoPage = (props) => {
         e.prevetDefault();
         setMsg('');
         setSending(true)
-        const response = await
-            axios.post('http://localhost:3000/index/contacto', formData);
+        const response = await axios.post('http://localhost:3000/api/contacto', formData);
         setSending(false);
         setMsg(response.data.message);
         if (response.data.error === false) {
@@ -52,7 +51,7 @@ const ContactoPage = (props) => {
 
     return (
         <div className="formulario_div">
-            <Form action="http://localhost:3000/contacto" method="post" onSubmit={handleSubmit} className="formulario">
+            <Form action='http://localhost:3000/api/contacto' method="post" onSubmit={handleSubmit} className="formulario">
                 <Row className="mb-6">
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label><b>Email</b></Form.Label>

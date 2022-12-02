@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 const NoticiasControl = require('../controllers/notes.controller')
-var nodemailer = require('nodemailer');
-const SMTPConnection = require('nodemailer/lib/smtp-connection');
 
 // Rutas inicio
 router.get('/', (req, res, next) => {
@@ -38,33 +36,6 @@ router.get('/logout', (req, res, next) => {
     if (err) return next(err);
     res.redirect('/login');
   });
-});
-
-
-// Mailer
-router.post('/contacto', async (req, res) => {
-
-  const mail = {
-    // from: 'Remitente',
-    to: 'jrgcorsi@gmail.com',
-    subject: 'contacto web',
-    html: `${req.body.nombre}, ${req.body.apellido} de la empresa ${req.body.empresa}, ${req.body.direccion} - ${req.body.ciudad} (${req.body.provincia}) se contacto a traves de la web y quiere mas informacion al correo ${req.body.email}`
-  };
-
-  const transport = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
-    auth: {
-      user: "ecd0c4da89dc4f",
-      pass: "957749809695fb"
-    }
-  });
-  await transport.sendMail(mail)
-
-  res.status(201).json({
-    error: false,
-    message: 'mensaje enviado'
-  })
 });
 
 // RUTAS PRIVADAS
